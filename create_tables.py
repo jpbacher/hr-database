@@ -51,3 +51,31 @@ job_table_create = ("""
         job_title VARCHAR(100)
     );
 """)
+
+
+employee_table_create = ("""
+    CREATE TABLE IF NOT EXISTS employee(
+        emp_id SERIAL PRIMARY KEY,
+        emp_name VARCHAR(100),
+        email VARCHAR(100),
+        hire_dt DATE
+    );
+""")
+
+
+location_table_create = ("""
+    CREATE TABLE IF NOT EXISTS location
+        location_id SERIAL PRIMARY KEY,
+        location VARCHAR(50)
+    );
+""")
+
+
+address_table_create = ("""
+    CREATE TABLE IF NOT EXISTS address(
+        address_id SERIAL PRIMARY KEY,
+        location_id INT REFERENCES location(location_id),
+        city VARCHAR(2),
+        state VARCHAR(50)
+    );
+""")
