@@ -12,7 +12,7 @@ def create_database(db_name):
     curr = conn.cursor()
 
     # create database
-    curr.execute(sql.SQL(f'CREATE DATABASE {db_name}'))
+    curr.execute(sql.SQL(f'CREATE DATABASE {db_name};'))
 
     # close connection to default
     curr.close()
@@ -32,3 +32,13 @@ def create_tables(curr, conn):
     for query in create_table_queries:
         curr.execute(query)
         conn.commit()
+
+
+def load_stage_table(curr, conn, csv_location):
+    conn = connect("host=127.0.0.1 dbname=db_name user=joshbacher")
+    curr = conn.cursor()
+
+    curr.execute(sql.SQL(f'COPY hr_stage FROM {csv_location} DELIMITER "," CSV HEADER;'))
+
+
+
