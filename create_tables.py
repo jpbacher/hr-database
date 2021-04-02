@@ -89,7 +89,12 @@ employment_history_table_create = ("""
         department_id INT REFERENCES department(department_id),
         address_id INT REFERENCES address(address_id),
         start_dt DATE,
-        end_dt DATE
+        end_dt DATE,
         PRIMARY KEY (emp_id, job_title_id)
     );
 """)
+
+
+create_table_queries = [hr_staging_table_create, manager_table_create, department_table_create,
+                        education_table_create, job_table_create, employee_table_create,
+                        location_table_create, address_table_create, employment_history_table_create]
