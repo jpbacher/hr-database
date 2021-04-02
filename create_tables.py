@@ -35,3 +35,19 @@ department_table_create = ("""
         department_nm VARCHAR(50)
     );
 """)
+
+
+education_table_create = ("""
+    CREATE TABLE IF NOT EXISTS education(
+        education_lvl_id SERIAL PRIMARY KEY,
+        education_lvl VARCHAR(50)
+    );
+""")
+
+
+job_table_create = ("""
+    CREATE TABLE IF NOT EXISTS job(
+        job_title_id SERIAL PRIMARY KEY,
+        job_title VARCHAR(100)
+    );
+""")
