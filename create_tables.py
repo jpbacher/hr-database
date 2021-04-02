@@ -95,6 +95,7 @@ employment_history_table_create = ("""
 """)
 
 
+# query list
 create_table_queries = [hr_staging_table_create, manager_table_create, department_table_create,
                         education_table_create, job_table_create, employee_table_create,
                         location_table_create, address_table_create, employment_history_table_create]
