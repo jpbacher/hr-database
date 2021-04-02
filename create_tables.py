@@ -19,7 +19,6 @@ hr_staging_table_create = ("""
     );
 """)
 
-
 # create final database tables
 manager_table_create = ("""
     CREATE TABLE IF NOT EXISTS manager(
@@ -77,5 +76,20 @@ address_table_create = ("""
         location_id INT REFERENCES location(location_id),
         city VARCHAR(2),
         state VARCHAR(50)
+    );
+""")
+
+
+employment_history_table_create = ("""
+    CREATE TABLE IF NOT EXISTS employment_history(
+        emp_id INT REFERENCES employee(emp_id),
+        job_title_id INT REFERENCES job(job_title_id),
+        education_lvl_id INT REFERENCES education(education_lvl_id),
+        manager_id INT REFERENCES manager(manager_id),
+        department_id INT REFERENCES department(department_id),
+        address_id INT REFERENCES address(address_id),
+        start_dt DATE,
+        end_dt DATE
+        PRIMARY KEY (emp_id, job_title_id)
     );
 """)
