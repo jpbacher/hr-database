@@ -9,7 +9,7 @@ def create_database(db_name):
 
     # connect to the default database
     conn = connect("host=127.0.0.1 dbname=postgres user=joshbacher")
-    curr = connect.cursor()
+    curr = conn.cursor()
 
     # create database
     curr.execute(sql.SQL(f'CREATE DATABASE {db_name}'))
@@ -22,3 +22,13 @@ def create_database(db_name):
     curr = conn.cursor()
 
     return curr, conn
+
+
+def create_tables(curr, conn):
+    '''
+    Create tables using queries in 'create_tables' module
+    '''
+
+    for query in create_table_queries:
+        curr.execute(query)
+        conn.commit()
