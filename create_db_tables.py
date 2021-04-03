@@ -1,8 +1,7 @@
 from psycopg2 import connect, sql
 import configparser
 
-from create_tables import create_table_queries
-import project
+from queries import create_table_queries
 
 
 config = configparser.ConfigParser()
@@ -43,15 +42,3 @@ def create_tables(curr, conn):
         print(f'Running {query}...')
         curr.execute(query)
         conn.commit()
-
-
-def load_stage_table(curr, conn, filename):
-    conn = connect(f'host={HOST} dbname={DB_NAME} user={USER}')
-    curr = conn.cursor()
-
-    curr.execute(sql.SQL(f'COPY hr_stage FROM {project.DATA_DIR/filename} DELIMITER "," CSV HEADER;'))
-
-
-
-
-
