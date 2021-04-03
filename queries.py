@@ -30,8 +30,8 @@ manager_table_create = ("""
 
 department_table_create = ("""
     CREATE TABLE IF NOT EXISTS Department(
-        department_id SERIAL PRIMARY KEY,
-        department_nm VARCHAR(50)
+        dept_id SERIAL PRIMARY KEY,
+        dept_nm VARCHAR(50)
     );
 """)
 
@@ -104,7 +104,7 @@ manager_table_insert = ("""
 
 
 department_table_insert = ("""
-    INSERT INTO Department (department_nm)
+    INSERT INTO Department (dept_nm)
         SELECT DISTINCT(department_nm)
         FROM HR_Stage
 """)
@@ -139,9 +139,32 @@ location_table_insert = ("""
 
 
 address_table_insert = ("""
-    INSERT INTO Address (address, city, state)
-        SELECT DISTINCT(address), city, state
-        FROM HR_STAGE
+    INSERT INTO Address (address, location_id, city, state)
+        SELECT DISTINCT(stg.address), l.location_id, stg.city, stg.state
+        FROM HR_Stage stg
+        JOIN Location l
+        ON l.location_id = stg.location_id
+""")
+
+
+employment_history_table_insert = ("""
+    INSERT INTO Employment_History (emp_id, job_title_id, education_lvl_id, manager_id, dept_id,
+                                    address_id, start_dt, end_dt, salary)
+        SELECT e.emp_id, j.job_title_id, edu.education_lvl_id, m.manager_id, d.dept_id, a.address_id, 
+            start_dt, end_dt, salary
+        FROM Employee e
+        JOIN HR_Stage stg
+        ON e.emp_name = stg.emp_name
+        JOIN Job j
+        ON j.job_tile = stg.job_title
+        JOIN Education edu
+        ON edu.education_lvl = stg.education_lvl
+        JOIN Manager m
+        ON m.manager = stg.manager
+        JOIN Department d
+        ON d.dept_nm = stg.department_nm
+        JOIN ADDRESS a
+        ON a.address = stg.address
 """)
 
 
