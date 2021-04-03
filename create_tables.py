@@ -90,6 +90,7 @@ employment_history_table_create = ("""
         address_id INT REFERENCES address(address_id),
         start_dt DATE,
         end_dt DATE,
+        salary INT,
         PRIMARY KEY (emp_id, job_title_id)
     );
 """)
