@@ -42,3 +42,19 @@ def create_tables(curr, conn):
         print(f'Running {query}...')
         curr.execute(query)
         conn.commit()
+
+
+def main():
+    """
+    Establishes connection to hr_tech_abc database & gets the cursor to it.
+    Creates all tables needed & closes connection.
+    """
+
+    curr, conn = create_database()
+    create_tables(curr, conn)
+
+    conn.close()
+
+
+if __name__ == "__main__":
+    main()
