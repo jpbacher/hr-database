@@ -110,7 +110,39 @@ department_table_insert = ("""
 """)
 
 
+education_table_insert = ("""
+    INSERT INTO Education (education_lvl)
+        SELECT DISTINCT(education_lvl)
+        FROM HR_Stage
+""")
 
+
+job_table_insert = ("""
+    INSERT INTO Job (job_title)
+        SELECT DISTINCT(job_title)
+        FROM HR_Stage
+""")
+
+
+employee_table_insert = ("""
+    INSERT INTO Employee (emp_name, email, hire_dt)
+        SELECT DISTINCT(employee), email, hire_dt
+        FROM HR_Stage
+""")
+
+
+location_table_insert = ("""
+    INSERT INTO Location (location)
+        SELECT DISTINCT(location)
+        FROM HR_Stage
+""")
+
+
+address_table_insert = ("""
+    INSERT INTO Address (address, city, state)
+        SELECT DISTINCT(address), city, state
+        FROM HR_STAGE
+""")
 
 
 # query list
