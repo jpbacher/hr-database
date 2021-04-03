@@ -103,6 +103,13 @@ manager_table_insert = ("""
 """)
 
 
+department_table_insert = ("""
+    INSERT INTO Department (department_nm)
+        SELECT DISTINCT(department_nm)
+        FROM HR_Stage
+""")
+
+
 
 
 
