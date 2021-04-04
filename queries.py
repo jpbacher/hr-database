@@ -86,7 +86,7 @@ employment_history_table_create = ("""
         job_title_id INT REFERENCES Job(job_title_id),
         education_lvl_id INT REFERENCES Education(education_lvl_id),
         manager_id INT REFERENCES Manager(manager_id),
-        department_id INT REFERENCES Department(department_id),
+        dept_id INT REFERENCES Department(dept_id),
         address_id INT REFERENCES Address(address_id),
         start_dt DATE,
         end_dt DATE,
