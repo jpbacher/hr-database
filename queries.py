@@ -14,7 +14,7 @@ hr_staging_table_create = ("""
         location VARCHAR(50),
         address VARCHAR(50),
         city VARCHAR(50),
-        state vVARCHAR(2),
+        state VARCHAR(2),
         education_lvl VARCHAR(50)
     );
 """)
