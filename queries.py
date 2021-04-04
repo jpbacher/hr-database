@@ -172,3 +172,8 @@ employment_history_table_insert = ("""
 create_table_queries = [hr_staging_table_create, manager_table_create, department_table_create,
                         education_table_create, job_table_create, employee_table_create,
                         location_table_create, address_table_create, employment_history_table_create]
+
+
+insert_table_queries = [manager_table_insert, department_table_insert, education_table_insert,
+                        job_table_insert, employee_table_insert, location_table_insert,
+                        address_table_insert, employment_history_table_insert]
