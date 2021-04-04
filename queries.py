@@ -1,3 +1,15 @@
+# Drop tables if exist
+hr_staging_table_drop = "DROP TABLE IF EXISTS HR_Stage"
+manager_table_drop = "DROP TABLE IF EXISTS Manager"
+department_table_drop = "DROP TABLE IF EXISTS Department"
+education_table_drop = "DROP TABLE IF EXISTS Education"
+job_table_drop = "DROP TABLE IF EXISTS Job"
+employee_table_drop = "DROP TABLE IF EXISTS Employee"
+location_table_drop = "DROP TABLE IF EXISTS Location"
+address_table_drop = "DROP TABLE IF EXISTS Address"
+employment_history_table_drop = "DROP TABLE IF EXISTS Employment_History"
+
+
 # Create staging table for the current data
 hr_staging_table_create = ("""
     CREATE TABLE IF NOT EXISTS HR_Stage(
@@ -172,6 +184,11 @@ employment_history_table_insert = ("""
 create_table_queries = [hr_staging_table_create, manager_table_create, department_table_create,
                         education_table_create, job_table_create, employee_table_create,
                         location_table_create, address_table_create, employment_history_table_create]
+
+
+drop_table_queries = [hr_staging_table_drop, manager_table_drop, department_table_drop,
+                      education_table_drop, job_table_drop, employee_table_drop,
+                      location_table_drop, address_table_drop, employment_history_table_drop]
 
 
 insert_table_queries = [manager_table_insert, department_table_insert, education_table_insert,
