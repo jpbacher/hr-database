@@ -74,20 +74,20 @@ address_table_create = ("""
     CREATE TABLE IF NOT EXISTS Address(
         address_id SERIAL PRIMARY KEY,
         location_id INT REFERENCES location(location_id),
-        city VARCHAR(2),
-        state VARCHAR(50)
+        city VARCHAR(50),
+        state VARCHAR(2)
     );
 """)
 
 
 employment_history_table_create = ("""
     CREATE TABLE IF NOT EXISTS Employment_History(
-        emp_id INT REFERENCES employee(emp_id),
-        job_title_id INT REFERENCES job(job_title_id),
-        education_lvl_id INT REFERENCES education(education_lvl_id),
-        manager_id INT REFERENCES manager(manager_id),
-        department_id INT REFERENCES department(department_id),
-        address_id INT REFERENCES address(address_id),
+        emp_id INT REFERENCES Employee(emp_id),
+        job_title_id INT REFERENCES Job(job_title_id),
+        education_lvl_id INT REFERENCES Education(education_lvl_id),
+        manager_id INT REFERENCES Manager(manager_id),
+        department_id INT REFERENCES Department(department_id),
+        address_id INT REFERENCES Address(address_id),
         start_dt DATE,
         end_dt DATE,
         salary INT,
