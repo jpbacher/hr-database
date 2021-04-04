@@ -63,7 +63,7 @@ employee_table_create = ("""
 
 
 location_table_create = ("""
-    CREATE TABLE IF NOT EXISTS Location
+    CREATE TABLE IF NOT EXISTS Location(
         location_id SERIAL PRIMARY KEY,
         location VARCHAR(50)
     );
