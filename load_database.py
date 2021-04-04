@@ -2,9 +2,7 @@ from psycopg2 import connect, sql
 import configparser
 
 import project
-from queries import (manager_table_insert, department_table_insert, education_table_insert,
-                     job_table_insert, employee_table_insert, location_table_insert,
-                     address_table_insert, employment_history_table_insert)
+from queries import insert_table_queries
 
 
 config = configparser.ConfigParser()
@@ -14,11 +12,20 @@ HOST = config.get('HOST')
 DB_NAME = config.get('DB_NAME')
 
 
-def load_stage_table(curr, conn, filename):
+def load_data_into_tables(curr, conn, filename):
+    """
+    Load the given csv file into the staging table, and transfer records to appropriate tables.
+    """
+
     conn = connect(f'host={HOST} dbname={DB_NAME} user={USER}')
     curr = conn.cursor()
-    hr_stage = curr.execute(sql.SQL(f'COPY hr_stage FROM {project.DATA_DIR/filename} DELIMITER "," CSV HEADER;'))
-    return curr, conn, hr_stage
 
+    # load staging table
+    curr.execute(sql.SQL(f'COPY hr_stage FROM {project.DATA_DIR/filename} DELIMITER "," CSV HEADER;'))
+    conn.commit()
 
-def load_data_into_hr_tables(curr, conn, stage_table):
+    # load all tables of the database
+    for query in insert_table_queries:
+        print(f'Running {query}...')
+        curr.execute(query)
+        conn.commit()
