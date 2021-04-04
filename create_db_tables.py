@@ -34,9 +34,9 @@ def create_database():
 
 
 def create_tables(curr, conn):
-    '''
+    """
     Create tables using queries in 'create_tables' module
-    '''
+    """
 
     for query in create_table_queries:
         print(f'Running {query}...')
