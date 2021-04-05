@@ -86,6 +86,7 @@ address_table_create = ("""
     CREATE TABLE IF NOT EXISTS Address(
         address_id SERIAL PRIMARY KEY,
         location_id INT REFERENCES Location(location_id),
+        address VARCHAR(50),
         city VARCHAR(50),
         state VARCHAR(2)
     );
