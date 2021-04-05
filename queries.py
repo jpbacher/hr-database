@@ -169,7 +169,7 @@ employment_history_table_insert = ("""
         JOIN HR_Stage stg
         ON e.emp_name = stg.emp_name
         JOIN Job j
-        ON j.job_tile = stg.job_title
+        ON j.job_title = stg.job_title
         JOIN Education edu
         ON edu.education_lvl = stg.education_lvl
         JOIN Manager m
