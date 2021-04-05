@@ -138,7 +138,7 @@ job_table_insert = ("""
 
 employee_table_insert = ("""
     INSERT INTO Employee (emp_name, email, hire_dt)
-        SELECT DISTINCT(employee), email, hire_dt
+        SELECT DISTINCT(emp_name), email, hire_dt
         FROM HR_Stage;
 """)
 
