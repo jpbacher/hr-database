@@ -18,8 +18,9 @@ def load_data_into_tables(curr, conn):
     """
 
     # load staging table
+    print(f'Loading staging table...')
     curr.execute(sql.SQL(f"COPY HR_Stage "
-                         f"FROM '{project.STAGING_DATA_PATH}' "
+                         f"FROM '{project.DATA_DIR/'clean_hr_data.csv'}'"
                          f"DELIMITER ',' "
                          f"CSV HEADER;"))
     conn.commit()
