@@ -6,9 +6,9 @@ from queries import create_table_queries
 
 config = configparser.ConfigParser()
 config.read_file(open('db.cfg'))
-USER = config.get('USERNAME')
-HOST = config.get('HOST')
-DB_NAME = config.get('DB_NAME')
+USER = config.get('DATABASE', 'USERNAME')
+HOST = config.get('DATABASE', 'HOST')
+DB_NAME = config.get('DATABASE', 'DB_NAME')
 
 
 def create_database():
@@ -18,13 +18,15 @@ def create_database():
 
     # connect to the default database
     conn = connect(f'host={HOST} dbname=postgres user={USER}')
+    conn.set_session(autocommit=True)
     curr = conn.cursor()
 
-    # create database
+    # drop database if exists & create the database
+    curr.execute(sql.SQL(f'DROP DATABASE IF EXISTS {DB_NAME};'))
     curr.execute(sql.SQL(f'CREATE DATABASE {DB_NAME};'))
 
     # close connection to default
-    curr.close()
+    conn.close()
 
     # connect to newly created database
     conn = connect(f'host={HOST} dbname={DB_NAME} user={USER}')
