@@ -111,42 +111,42 @@ employment_history_table_create = ("""
 manager_table_insert = ("""
     INSERT INTO Manager (manager)
         SELECT DISTINCT(manager)
-        FROM HR_Stage
+        FROM HR_Stage;
 """)
 
 
 department_table_insert = ("""
     INSERT INTO Department (dept_nm)
         SELECT DISTINCT(department_nm)
-        FROM HR_Stage
+        FROM HR_Stage;
 """)
 
 
 education_table_insert = ("""
     INSERT INTO Education (education_lvl)
         SELECT DISTINCT(education_lvl)
-        FROM HR_Stage
+        FROM HR_Stage;
 """)
 
 
 job_table_insert = ("""
     INSERT INTO Job (job_title)
         SELECT DISTINCT(job_title)
-        FROM HR_Stage
+        FROM HR_Stage;
 """)
 
 
 employee_table_insert = ("""
     INSERT INTO Employee (emp_name, email, hire_dt)
         SELECT DISTINCT(employee), email, hire_dt
-        FROM HR_Stage
+        FROM HR_Stage;
 """)
 
 
 location_table_insert = ("""
     INSERT INTO Location (location)
         SELECT DISTINCT(location)
-        FROM HR_Stage
+        FROM HR_Stage;
 """)
 
 
@@ -155,7 +155,7 @@ address_table_insert = ("""
         SELECT DISTINCT(stg.address), l.location_id, stg.city, stg.state
         FROM HR_Stage stg
         JOIN Location l
-        ON l.location_id = stg.location_id
+        ON l.location = stg.location;
 """)
 
 
@@ -176,7 +176,7 @@ employment_history_table_insert = ("""
         JOIN Department d
         ON d.dept_nm = stg.department_nm
         JOIN ADDRESS a
-        ON a.address = stg.address
+        ON a.address = stg.address;
 """)
 
 
