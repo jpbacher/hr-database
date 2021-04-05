@@ -181,6 +181,26 @@ employment_history_table_insert = ("""
 """)
 
 
+# CRUD queries
+web_programmer_job_insert = ("""
+    INSERT INTO Job (job_title)
+    VALUES ('Web Programmer');
+""")
+
+
+web_programmer_to_web_developer_job = ("""
+    INSERT INTO Job (job_title)
+    VALUES ('Web Developer')
+    WHERE job_title = 'Web Programmer'
+""")
+
+
+web_developer_job_delete = ("""
+    DELETE FROM Job
+    WHERE job_title = 'Web Developer'
+""")
+
+
 # query list
 create_table_queries = [hr_staging_table_create, manager_table_create, department_table_create,
                         education_table_create, job_table_create, employee_table_create,
