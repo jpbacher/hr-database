@@ -1,7 +1,7 @@
 from psycopg2 import connect, sql
 import configparser
 
-from queries import create_table_queries
+from queries import create_table_queries, drop_table_queries
 
 
 config = configparser.ConfigParser()
@@ -35,6 +35,15 @@ def create_database():
     return curr, conn
 
 
+def drop_tables(curr, conn):
+    """
+    Drop tables if exist
+    """
+    for query in drop_table_queries:
+        curr.execute(query)
+        conn.commit()
+
+
 def create_tables(curr, conn):
     """
     Create tables using queries in 'create_tables' module
@@ -53,6 +62,7 @@ def main():
     """
 
     curr, conn = create_database()
+    drop_tables(curr, conn)
     create_tables(curr, conn)
 
     conn.close()
