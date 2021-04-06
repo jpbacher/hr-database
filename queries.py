@@ -215,3 +215,20 @@ web_developer_job_delete = ("""
     DELETE FROM Job
     WHERE job_title = 'Web Developer'
 """)
+
+
+create_employee_attributes_view = ("""
+    CREATE VIEW employee_attributes AS
+      SELECT e.emp_id, e.emp_name, e.email, e.hire_dt, ehist.start_dt, j.job_title,
+        d.dept_nm, edu.education_lvl
+      FROM Employee e
+      JOIN Employment_History ehist
+      ON e.emp_id = ehist.emp_id
+      JOIN Job j
+      ON ehist.job_title_id = j.job_title_id
+      JOIN Department d
+      ON ehist.dept_id = d.dept_id
+      JOIN Education edu
+      ON ehist.education_lvl_id = edu.education_lvl_id
+      WHERE end_dt IS NULL;
+""")
