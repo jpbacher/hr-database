@@ -2,7 +2,7 @@ from psycopg2 import connect, sql
 import configparser
 
 import project
-from queries import insert_table_queries
+from queries import insert_table_queries, create_employee_attributes_view
 
 
 config = configparser.ConfigParser()
@@ -32,12 +32,22 @@ def load_data_into_tables(curr, conn):
         conn.commit()
 
 
+def create_employee_view(curr, conn):
+    """
+    Create an employee attribute view
+    """
+    print('Creating employee attribute view...')
+    curr.execute(create_employee_attributes_view)
+    conn.commit()
+
+
 def main():
 
     conn = connect(f'host={HOST} dbname={DB_NAME} user={USER}')
     curr = conn.cursor()
 
     load_data_into_tables(curr, conn)
+    create_employee_view(curr, conn)
 
 
 if __name__ == "__main__":
