@@ -139,7 +139,7 @@ job_table_insert = ("""
 
 employee_table_insert = ("""
     INSERT INTO Employee (emp_name, email, hire_dt)
-        SELECT DISTINCT(emp_name), email, hire_dt
+        SELECT DISTINCT(emp_name), email, hire_dt 
         FROM HR_Stage;
 """)
 
@@ -181,6 +181,22 @@ employment_history_table_insert = ("""
 """)
 
 
+# query list
+create_table_queries = [hr_staging_table_create, manager_table_create, department_table_create,
+                        education_table_create, job_table_create, employee_table_create,
+                        location_table_create, address_table_create, employment_history_table_create]
+
+
+drop_table_queries = [hr_staging_table_drop, manager_table_drop, department_table_drop,
+                      education_table_drop, job_table_drop, employee_table_drop,
+                      location_table_drop, address_table_drop, employment_history_table_drop]
+
+
+insert_table_queries = [manager_table_insert, department_table_insert, education_table_insert,
+                        job_table_insert, employee_table_insert, location_table_insert,
+                        address_table_insert, employment_history_table_insert]
+
+
 # CRUD queries
 web_programmer_job_insert = ("""
     INSERT INTO Job (job_title)
@@ -199,19 +215,3 @@ web_developer_job_delete = ("""
     DELETE FROM Job
     WHERE job_title = 'Web Developer'
 """)
-
-
-# query list
-create_table_queries = [hr_staging_table_create, manager_table_create, department_table_create,
-                        education_table_create, job_table_create, employee_table_create,
-                        location_table_create, address_table_create, employment_history_table_create]
-
-
-drop_table_queries = [hr_staging_table_drop, manager_table_drop, department_table_drop,
-                      education_table_drop, job_table_drop, employee_table_drop,
-                      location_table_drop, address_table_drop, employment_history_table_drop]
-
-
-insert_table_queries = [manager_table_insert, department_table_insert, education_table_insert,
-                        job_table_insert, employee_table_insert, location_table_insert,
-                        address_table_insert, employment_history_table_insert]
