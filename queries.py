@@ -232,3 +232,19 @@ create_employee_attributes_view = ("""
       ON ehist.education_lvl_id = edu.education_lvl_id
       WHERE end_dt IS NULL;
 """)
+
+
+get_employee_job_history_procedure = ("""
+    CREATE FUNCTION retrieve_employee_job_history(emp_name VARCHAR(100)
+      BEGIN
+        SELECT e.emp_name, j.job_title, d.dept_nm, m.manager, start_dt, end_dt
+        FROM Employee e
+        JOIN Employee_History ehist
+        ON e.emp_id = ehist.emp_id
+        JOIN Job j
+        ON ehist.job_title_id = j.job_title_id
+        JOIN Department d
+        ON ehist.dept_id = d.dept_id 
+        JOIN Manager m
+        ON ehist.manager_id = m.manager_id;
+""")
