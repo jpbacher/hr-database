@@ -2,7 +2,8 @@ from psycopg2 import connect, sql
 import configparser
 
 import project
-from queries import insert_table_queries, create_employee_attributes_view
+from queries import (insert_table_queries, create_employee_attributes_view,
+                     get_employee_job_history_procedure)
 
 
 config = configparser.ConfigParser()
@@ -32,12 +33,21 @@ def load_data_into_tables(curr, conn):
         conn.commit()
 
 
-def create_employee_view(curr, conn):
+def create_view(curr, conn):
     """
     Create an employee attribute view
     """
     print('Creating employee attribute view...')
     curr.execute(create_employee_attributes_view)
+    conn.commit()
+
+
+def create_procedure(curr, conn):
+    """
+    Create a procedure that returns past & current jobs of a given employee
+    """
+    print('Creating procedure...')
+    curr.execute(get_employee_job_history_procedure)
     conn.commit()
 
 
@@ -47,7 +57,8 @@ def main():
     curr = conn.cursor()
 
     load_data_into_tables(curr, conn)
-    create_employee_view(curr, conn)
+    create_view(curr, conn)
+    create_procedure(curr, conn)
 
 
 if __name__ == "__main__":
