@@ -236,7 +236,7 @@ create_employee_attributes_view = ("""
 
 get_employee_job_history_procedure = ("""
     CREATE FUNCTION retrieve_employee_job_history(emp_name VARCHAR(100)
-      BEGIN
+    BEGIN
         SELECT e.emp_name, j.job_title, d.dept_nm, m.manager, start_dt, end_dt
         FROM Employee e
         JOIN Employee_History ehist
@@ -247,4 +247,6 @@ get_employee_job_history_procedure = ("""
         ON ehist.dept_id = d.dept_id 
         JOIN Manager m
         ON ehist.manager_id = m.manager_id;
+    END;
+    LANGUAGE 'plpgsql';
 """)
