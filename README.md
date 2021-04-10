@@ -7,6 +7,14 @@ to 200 in only 6 months. Thus, HR is experiencing difficulty maintaining simple
 employee information in an Excel spreadsheet.
  
 
+## Files used for creating database
+* *clean_staging_data.py*: script that removes commas from salary column
+* *queries.py*: contains all sql queries, imported into various scripts
+* *create_db_tables.py*: creates the HR database, and adds the tables
+* *load_database.py*: reads data into the staging table, then loads records into database tables;
+creates a view and procedure
+* *read_queries.ipynb*: displays output of various questions
+
 ### Data that will be stored
 * *emp_name* 
 * *email*
@@ -77,7 +85,5 @@ The ingestion method will be a simple ETL:
 
 ### Scalability & Flexibility Considerations
 
-### Storage & Retention
+### Storage & 
 
-
-### Backup
