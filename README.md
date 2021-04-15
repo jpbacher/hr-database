@@ -87,4 +87,7 @@ The ingestion method will be a simple ETL:
 
 
 #### Scalability & Flexibility Considerations
-
+Because we expect the employee count to rapidly increase over the next 5 years (20% per year), we will
+use a *sharded database*. This approach will allow the HR team to easily 'write' in more data. The downside
+to this method is 'reading' times will be slower for users; however, Tech ABC is more concerned
+about keeping the HR database up-to-date.
