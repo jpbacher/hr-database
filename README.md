@@ -2,13 +2,13 @@
 Converting HR data into a database using PostgreSQL
 
 
-Tech ABC has been experiencing rapid growth. The company has grown from 10 employees
+Tech ABC Inc. has been experiencing rapid growth. The company has grown from 10 employees
 to 200 in only 6 months. Thus, HR is experiencing difficulty maintaining simple 
 employee information in an Excel spreadsheet.
  
 
 #### Files used for creating database
-* *project*: displays project structure
+* *project.py*: displays project structure
 * *clean_staging_data.py*: script that removes commas from salary column
 * *queries.py*: contains all sql queries, imported into various scripts
 * *create_db_tables.py*: creates the HR database, and adds the tables
@@ -58,7 +58,7 @@ to close to 500 employees.
 Salary information restricted to the HR team and management. 
  
 
-#### Data retention/backup
+#### Data retention/backup & storage
 Federal regulation requires employee data be retained for at least 7 years.
  
 
@@ -87,10 +87,4 @@ The ingestion method will be a simple ETL:
 
 
 #### Scalability & Flexibility Considerations
-
-
-#### Storage & Retention
-
-
-#### Backup
 
