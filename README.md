@@ -15,6 +15,7 @@ employee information in an Excel spreadsheet.
 * *load_database.py*: reads data into the staging table, then loads records into database tables;
 creates a view and procedure
 * *read_queries.ipynb*: displays output of various questions
+* *hrERDPhysical.pdf*: shows the Physical ERD of the database
 
 
 #### Data that will be stored
